@@ -91,4 +91,21 @@ public class BasicController {
         return "basic/attribute";
     }
 
+    @GetMapping("/each")
+    public String each(Model model) {
+        addUsers(model);
+
+        return "basic/each";
+    }
+
+
+    private void addUsers(Model model){
+        List<User> list = new ArrayList<>();
+        list.add(new User().builder().username("userA").age(10).build());
+        list.add(new User().builder().username("userB").age(20).build());
+        list.add(new User().builder().username("userC").age(30).build());
+
+        model.addAttribute("users", list);
+    }
+
 }
